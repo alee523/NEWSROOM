@@ -743,6 +743,433 @@
             font-size: 11px;
         }
 
+        
+        
+        /* =========================================================
+         *  HERO SLIDESHOW
+         = *======================================================== */
+        
+        .hero-main {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        
+        /* Slides container */
+        
+        .hero-slides {
+            position: absolute;
+            inset: 0;
+        }
+        
+        
+        /* Individual slide */
+        
+        .hero-slide {
+            
+            position: absolute;
+            
+            inset: 0;
+            
+            opacity: 0;
+            
+            visibility: hidden;
+            
+            transform: scale(1.04);
+            
+            transition:
+            opacity .8s ease,
+            transform 5s ease,
+            visibility .8s ease;
+            
+            display: flex;
+            
+            align-items: flex-end;
+            
+        }
+        
+        
+        /* Active slide */
+        
+        .hero-slide.active {
+            
+            opacity: 1;
+            
+            visibility: visible;
+            
+            transform: scale(1);
+        }
+        
+        
+        /* Different visual backgrounds */
+        
+        .hero-slide:nth-child(1) {
+            
+            background:
+            
+            radial-gradient(
+                circle at 70% 25%,
+                #7c8791,
+                transparent 24%
+            ),
+            
+            radial-gradient(
+                circle at 20% 35%,
+                #4d5963,
+                transparent 28%
+            ),
+            
+            linear-gradient(
+                135deg,
+                #111,
+                #56616a 50%,
+                #171717
+            );
+        }
+        
+        
+        .hero-slide:nth-child(2) {
+            
+            background:
+            
+            radial-gradient(
+                circle at 75% 25%,
+                #806d61,
+                transparent 25%
+            ),
+            
+            radial-gradient(
+                circle at 20% 40%,
+                #394852,
+                transparent 30%
+            ),
+            
+            linear-gradient(
+                135deg,
+                #121212,
+                #4d5961 50%,
+                #1c1c1c
+            );
+        }
+        
+        
+        .hero-slide:nth-child(3) {
+            
+            background:
+            
+            radial-gradient(
+                circle at 70% 25%,
+                #697b68,
+                transparent 25%
+            ),
+            
+            radial-gradient(
+                circle at 25% 35%,
+                #394239,
+                transparent 30%
+            ),
+            
+            linear-gradient(
+                135deg,
+                #101010,
+                #536052 50%,
+                #161616
+            );
+        }
+        
+        
+        .hero-slide:nth-child(4) {
+            
+            background:
+            
+            radial-gradient(
+                circle at 70% 25%,
+                #80667c,
+                transparent 25%
+            ),
+            
+            radial-gradient(
+                circle at 25% 35%,
+                #473c4c,
+                transparent 30%
+            ),
+            
+            linear-gradient(
+                135deg,
+                #111,
+                #5c5060 50%,
+                #171717
+            );
+        }
+        
+        
+        /* Dark overlay */
+        
+        .hero-slide::before {
+            
+            content: "";
+            
+            position: absolute;
+            
+            inset: 0;
+            
+            background:
+            linear-gradient(
+                to top,
+                rgba(0,0,0,.96),
+                            rgba(0,0,0,.05) 72%
+            );
+            
+            z-index: 1;
+        }
+        
+        
+        /* Hero content */
+        
+        .hero-slide .hero-content {
+            
+            position: relative;
+            
+            z-index: 3;
+            
+            width: 100%;
+            
+            padding: 45px;
+        }
+        
+        
+        /* Decoration */
+        
+        .hero-slide .hero-decoration {
+            
+            position: absolute;
+            
+            width: 360px;
+            
+            height: 360px;
+            
+            border:
+            1px solid
+            rgba(255,255,255,.12);
+            
+            border-radius: 50%;
+            
+            right: 12%;
+            
+            top: 8%;
+            
+            z-index: 1;
+            
+            pointer-events: none;
+        }
+        
+        
+        .hero-slide .hero-decoration::before {
+            
+            content: "";
+            
+            position: absolute;
+            
+            inset: 40px;
+            
+            border:
+            1px solid
+            rgba(255,255,255,.1);
+            
+            border-radius: 50%;
+        }
+        
+        
+        .hero-slide .hero-decoration::after {
+            
+            content: "";
+            
+            position: absolute;
+            
+            inset: 100px;
+            
+            border:
+            1px solid
+            rgba(255,255,255,.08);
+            
+            border-radius: 50%;
+        }
+        
+        
+        /* =========================================================
+         *  ARROWS
+         = *======================================================== */
+        
+        .hero-arrow {
+            
+            position: absolute;
+            
+            top: 50%;
+            
+            transform: translateY(-50%);
+            
+            z-index: 10;
+            
+            width: 48px;
+            
+            height: 70px;
+            
+            border: 0;
+            
+            background:
+            rgba(0,0,0,.38);
+            
+            color: white;
+            
+            font-size: 42px;
+            
+            line-height: 1;
+            
+            display: grid;
+            
+            place-items: center;
+            
+            opacity: .7;
+            
+            transition:
+            background .25s ease,
+            opacity .25s ease;
+        }
+        
+        
+        .hero-arrow:hover {
+            
+            background:
+            var(--accent);
+            
+            opacity: 1;
+        }
+        
+        
+        .hero-prev {
+            
+            left: 0;
+        }
+        
+        
+        .hero-next {
+            
+            right: 0;
+        }
+        
+        
+        /* =========================================================
+         *  DOTS
+         = *======================================================== */
+        
+        .hero-dots {
+            
+            position: absolute;
+            
+            z-index: 12;
+            
+            bottom: 18px;
+            
+            left: 50%;
+            
+            transform:
+            translateX(-50%);
+            
+            display: flex;
+            
+            align-items: center;
+            
+            gap: 6px;
+            
+            padding: 6px 10px;
+            
+            background:
+            rgba(0,0,0,.35);
+            
+            border-radius: 30px;
+            
+            backdrop-filter:
+            blur(8px);
+        }
+        
+        
+        .hero-dot {
+            
+            width: 7px;
+            
+            height: 7px;
+            
+            padding: 0;
+            
+            border: 0;
+            
+            border-radius: 50%;
+            
+            background:
+            rgba(255,255,255,.4);
+            
+            cursor: pointer;
+            
+            transition:
+            width .3s ease,
+            background .3s ease;
+        }
+        
+        
+        .hero-dot.active {
+            
+            width: 25px;
+            
+            border-radius: 10px;
+            
+            background:
+            white;
+        }
+        
+        
+        /* =========================================================
+         *  MOBILE
+         = *======================================================== */
+        
+        @media (max-width: 760px) {
+            
+            .hero-arrow {
+                
+                width: 38px;
+                
+                height: 55px;
+                
+                font-size: 32px;
+            }
+            
+            
+            .hero-slide .hero-content {
+                
+                padding: 25px;
+            }
+            
+            
+            .hero-slide .hero-decoration {
+                
+                width: 250px;
+                
+                height: 250px;
+                
+                right: -70px;
+                
+                top: 12%;
+            }
+            
+            
+            .hero-dots {
+                
+                bottom: 12px;
+            }
+            
+        }
+        
+        
+        
 
         /* =========================================================
            STORY CARDS
@@ -2242,61 +2669,238 @@
                 <div class="hero-grid">
 
 
-                    <article class="hero-main reveal">
+                <article class="hero-main reveal show">
+                
+                <!-- SLIDES -->
+                
+                <div class="hero-slides">
+                
+                <!-- Slide 1 -->
+                <div class="hero-slide active">
+                
+                <div class="hero-decoration"></div>
+                
+                <div class="hero-content">
+                
+                <div class="category">
+                TOP STORY
+                </div>
+                
+                <h1 class="hero-title">
+                A rapidly changing world enters
+                a new era as major developments
+                reshape the global landscape
+                </h1>
+                
+                <p class="hero-summary">
+                Our newsroom brings you the latest
+                developments, expert analysis and
+                comprehensive coverage from around
+                the world.
+                </p>
+                
+                <div class="hero-meta">
+                
+                <span>
+                16 minutes ago
+                </span>
+                
+                <span>
+                ● 5 min read
+                </span>
+                
+                <span>
+                Live coverage
+                </span>
+                
+                </div>
+                
+                </div>
+                
+                </div>
+                
+                
+                <!-- Slide 2 -->
+                <div class="hero-slide">
+                
+                <div class="hero-decoration"></div>
+                
+                <div class="hero-content">
+                
+                <div class="category">
+                WORLD
+                </div>
+                
+                <h1 class="hero-title">
+                World leaders meet as new
+                developments dominate
+                international headlines
+                </h1>
+                
+                <p class="hero-summary">
+                Follow our live coverage as leaders
+                respond to the latest developments
+                and major international events.
+                </p>
+                
+                <div class="hero-meta">
+                
+                <span>
+                32 minutes ago
+                </span>
+                
+                <span>
+                ● 6 min read
+                </span>
+                
+                <span>
+                Global Report
+                </span>
+                
+                </div>
+                
+                </div>
+                
+                </div>
+                
+                
+                <!-- Slide 3 -->
+                <div class="hero-slide">
+                
+                <div class="hero-decoration"></div>
+                
+                <div class="hero-content">
+                
+                <div class="category">
+                SPORTS
+                </div>
+                
+                <h1 class="hero-title">
+                The biggest sporting stories
+                making headlines around the world
+                </h1>
+                
+                <p class="hero-summary">
+                Match updates, breaking transfer news,
+exclusive interviews and expert analysis
+from the world of sports.
+</p>
+
+<div class="hero-meta">
+
+<span>
+45 minutes ago
+</span>
+
+<span>
+● 4 min read
+</span>
+
+<span>
+Sports Studio
+</span>
+
+</div>
+
+</div>
+
+</div>
 
 
-                        <div class="hero-decoration"></div>
+<!-- Slide 4 -->
+<div class="hero-slide">
+
+<div class="hero-decoration"></div>
+
+<div class="hero-content">
+
+<div class="category">
+ENTERTAINMENT
+</div>
+
+<h1 class="hero-title">
+The stories, stars and moments
+everyone is talking about today
+</h1>
+
+<p class="hero-summary">
+Exclusive entertainment coverage,
+celebrity news, interviews and the
+latest cultural stories.
+</p>
+
+<div class="hero-meta">
+
+<span>
+1 hour ago
+</span>
+
+<span>
+● 3 min read
+</span>
+
+<span>
+Entertainment
+</span>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
 
 
-                        <div class="hero-content">
+<!-- PREVIOUS BUTTON -->
+
+<button
+class="hero-arrow hero-prev"
+aria-label="Previous story">
+
+‹
+
+</button>
 
 
-                            <div class="category">
+<!-- NEXT BUTTON -->
 
-                                TOP STORY
+<button
+class="hero-arrow hero-next"
+aria-label="Next story">
 
-                            </div>
+›
 
-
-                            <h1 class="hero-title">
-
-                                A rapidly changing world enters
-                                a new era as major developments
-                                reshape the global landscape
-
-                            </h1>
+</button>
 
 
-                            <p class="hero-summary">
+<!-- DOTS -->
 
-                                Our newsroom brings you the latest
-                                developments, expert analysis and
-                                comprehensive coverage from around
-                                the world.
+<div class="hero-dots">
 
-                            </p>
+<button
+class="hero-dot active"
+data-slide="0">
+</button>
 
+<button
+class="hero-dot"
+data-slide="1">
+</button>
 
-                            <div class="hero-meta">
+<button
+class="hero-dot"
+data-slide="2">
+</button>
 
-                                <span>
-                                    16 minutes ago
-                                </span>
+<button
+class="hero-dot"
+data-slide="3">
+</button>
 
-                                <span>
-                                    ● 5 min read
-                                </span>
+</div>
 
-                                <span>
-                                    Live coverage
-                                </span>
-
-                            </div>
-
-
-                        </div>
-
-                    </article>
+</article>
 
 
 
@@ -4041,6 +4645,212 @@
         );
 
 
+        
+        
+        
+        /* =========================================================
+         H ERO SLIDESHOW    *
+         ========================================================= */
+        
+        const heroSlider =
+        document.querySelector(".hero-main");
+        
+        const heroSlides =
+        document.querySelectorAll(".hero-slide");
+        
+        const heroDots =
+        document.querySelectorAll(".hero-dot");
+        
+        const heroPrev =
+        document.querySelector(".hero-prev");
+        
+        const heroNext =
+        document.querySelector(".hero-next");
+        
+        
+        let currentHeroSlide = 0;
+        
+        let heroTimer;
+        
+        
+        /* Show slide */
+        
+        function showHeroSlide(index) {
+            
+            if (index < 0) {
+                
+                index =
+                heroSlides.length - 1;
+                
+            }
+            
+            if (index >= heroSlides.length) {
+                
+                index = 0;
+                
+            }
+            
+            
+            heroSlides.forEach(
+                slide => {
+                    
+                    slide.classList.remove(
+                        "active"
+                    );
+                    
+                }
+            );
+            
+            
+            heroDots.forEach(
+                dot => {
+                    
+                    dot.classList.remove(
+                        "active"
+                    );
+                    
+                }
+            );
+            
+            
+            heroSlides[index]
+            .classList
+            .add("active");
+            
+            
+            heroDots[index]
+            .classList
+            .add("active");
+            
+            
+            currentHeroSlide = index;
+            
+        }
+        
+        
+        /* Next */
+        
+        function nextHeroSlide() {
+            
+            showHeroSlide(
+                currentHeroSlide + 1
+            );
+            
+        }
+        
+        
+        /* Previous */
+        
+        function previousHeroSlide() {
+            
+            showHeroSlide(
+                currentHeroSlide - 1
+            );
+            
+        }
+        
+        
+        /* Automatic slideshow */
+        
+        function startHeroSlideshow() {
+            
+            stopHeroSlideshow();
+            
+            heroTimer =
+            setInterval(
+                nextHeroSlide,
+                5000
+            );
+            
+        }
+        
+        
+        /* Stop */
+        
+        function stopHeroSlideshow() {
+            
+            if (heroTimer) {
+                
+                clearInterval(
+                    heroTimer
+                );
+                
+            }
+            
+        }
+        
+        
+        /* Next button */
+        
+        heroNext.addEventListener(
+            "click",
+            () => {
+                
+                nextHeroSlide();
+                
+                startHeroSlideshow();
+                
+            }
+        );
+        
+        
+        /* Previous button */
+        
+        heroPrev.addEventListener(
+            "click",
+            () => {
+                
+                previousHeroSlide();
+                
+                startHeroSlideshow();
+                
+            }
+        );
+        
+        
+        /* Dots */
+        
+        heroDots.forEach(
+            (dot, index) => {
+                
+                dot.addEventListener(
+                    "click",
+                    () => {
+                        
+                        showHeroSlide(index);
+                        
+                        startHeroSlideshow();
+                        
+                    }
+                );
+                
+            }
+        );
+        
+        
+        /* Pause when mouse enters */
+        
+        heroSlider.addEventListener(
+            "mouseenter",
+            stopHeroSlideshow
+        );
+        
+        
+        /* Resume when mouse leaves */
+        
+        heroSlider.addEventListener(
+            "mouseleave",
+            startHeroSlideshow
+        );
+        
+        
+        /* Start */
+        
+        showHeroSlide(0);
+        
+        startHeroSlideshow();
+        
+        
     </script>
 
 
